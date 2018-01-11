@@ -11,6 +11,7 @@ namespace wfp_birthday_manager
         private string name { get; set; }
         private string lastName { get; set; }
         private DateTime birthday { get; set; }
+        private int nextBirthday { get; set; }
 
         public string Name
         {
@@ -30,7 +31,11 @@ namespace wfp_birthday_manager
             set { birthday = value; }
         }
 
-        public int NextBirthday;
+        public int NextBirthday
+        {
+            get { return nextBirthday; }
+            set { nextBirthday = value; }
+        }
 
         public void ToNextBirthday(Person p)
         {

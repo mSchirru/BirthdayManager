@@ -30,8 +30,8 @@ namespace wfp_birthday_manager
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            btn_change.Enabled = false;
-            btn_confirm.Enabled = false;
+            
+            btn_confirmAdd.Enabled = false;
 
             if (!Directory.Exists(dirPath))
             {
@@ -50,7 +50,7 @@ namespace wfp_birthday_manager
                 {
                     string json = r.ReadToEnd();
 
-                    if (json == null)
+                    if (json == "")
                     {
                         List<Person> pessoas = new List<Person>();
                         pessoas = JsonConvert.DeserializeObject<List<Person>>(json);
@@ -70,24 +70,21 @@ namespace wfp_birthday_manager
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            btn_change.Enabled = true;
-            btn_confirm.Enabled = true;
+            btn_attLista.Enabled = true;
+            btn_confirmAdd.Enabled = true;
             btn_add.Enabled = false;
         }
 
-        private void btn_confirm_Click(object sender, EventArgs e)
+        private void btn_confirmAdd_Click(object sender, EventArgs e)
         {
             Person p = new Person();
             p.Name = txt_name.Text;
             p.LastName = txt_lastname.Text;
-            p.Birthday = DateTime.ParseExact(mtxt_birthday.Text.ToString(), "dd/MM/yyyy", CultureInfo.CurrentCulture);
+            DateTime dt = DateTime.Parse(mtxt_birthday.Text);
+            p.Birthday = DateTime.Parse(dt.ToString("dd/MM/yyyy"));
             p.ToNextBirthday(p);
 
-
-
             pessoas.Add(p);
-
-            // QUANDO INICIAR TENHO QUE ADD PESSOAS QUE JA ESTAO EM OUTRO ARQUIVO
 
             string json = JsonConvert.SerializeObject(pessoas.ToArray());
             System.IO.File.WriteAllText(path, json);
@@ -113,57 +110,42 @@ namespace wfp_birthday_manager
 
         }
 
-        private void btn_change_Click(object sender, EventArgs e)
+        private void btn_attLista_Click(object sender, EventArgs e)
         {
 
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
                 List<Person> items = JsonConvert.DeserializeObject<List<Person>>(json);
-                
-
-
 
                 var bindingList = new BindingList<Person>(items);
                 var source = new BindingSource(bindingList, null);
                 dataGridView1.DataSource = source;
 
-                //foreach (Person newp in items)
-                //{
-                //    dataGridView1.DataSource = items;
-                //}
+                this.dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                this.dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
 
             }
 
 
 
-            //string[] lines = System.IO.File.ReadAllLines(path);
-
-            //// Display the file contents by using a foreach loop.
-
-            //foreach (string line in lines)
-            //{
-            //    string json = File.ReadAllText(path); //read from file into a string
-            //    Person p2 = JsonConvert.DeserializeObject<Person>(json);
-            //    textBox1.Text += p2.ToString();
-            //}
-
-
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_delete_Click(object sender, EventArgs e)
         {
             checkedListBox1.Items.Clear();
 
             foreach (Person p in pessoas)
             {
-                checkedListBox1.Items.Add(p, false);
+                checkedListBox1.Items.Add(p.ToString(), false);
             }
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_confirmDel_Click(object sender, EventArgs e)
         {
 
             foreach (Person item in checkedListBox1.CheckedItems.OfType<Person>().ToList())
@@ -176,7 +158,7 @@ namespace wfp_birthday_manager
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_edit_Click(object sender, EventArgs e)
         {
             foreach (Person item in checkedListBox1.CheckedItems.OfType<Person>().ToList())
             {
@@ -190,7 +172,7 @@ namespace wfp_birthday_manager
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btn_confirmEdit_Click(object sender, EventArgs e)
         {
             Person p = pessoas[index];
 
