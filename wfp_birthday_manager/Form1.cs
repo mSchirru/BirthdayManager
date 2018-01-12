@@ -30,8 +30,14 @@ namespace wfp_birthday_manager
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            groupBox1.Visible = false;
+            groupBox2.Visible = false;
             btn_confirmAdd.Enabled = false;
+            btn_confirmDel.Enabled = false;
+            btn_confirmEdit.Enabled = false;
+            
+
+
 
             if (!Directory.Exists(dirPath))
             {
@@ -73,6 +79,7 @@ namespace wfp_birthday_manager
             btn_attLista.Enabled = true;
             btn_confirmAdd.Enabled = true;
             btn_add.Enabled = false;
+            groupBox1.Visible = true;
         }
 
         private void btn_confirmAdd_Click(object sender, EventArgs e)
@@ -80,15 +87,14 @@ namespace wfp_birthday_manager
             Person p = new Person();
             p.Name = txt_name.Text;
             p.LastName = txt_lastname.Text;
-            DateTime dt = DateTime.Parse(mtxt_birthday.Text);
-            p.Birthday = DateTime.Parse(dt.ToString("dd/MM/yyyy"));
+            p.Birthday = DateTime.Parse(mtxt_birthday.Text, CultureInfo.InvariantCulture);
             p.ToNextBirthday(p);
 
             pessoas.Add(p);
 
             string json = JsonConvert.SerializeObject(pessoas.ToArray());
             System.IO.File.WriteAllText(path, json);
-
+            groupBox1.Visible = false;
 
             // using (System.IO.StreamWriter file =
             //new System.IO.StreamWriter(path, true))
@@ -136,14 +142,9 @@ namespace wfp_birthday_manager
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            checkedListBox1.Items.Clear();
 
-            foreach (Person p in pessoas)
-            {
-
-                checkedListBox1.Items.Add(p, false);
-            }
-
+            
+            btn_confirmDel.Enabled = true;
         }
 
         private void btn_confirmDel_Click(object sender, EventArgs e)
@@ -155,21 +156,25 @@ namespace wfp_birthday_manager
                 pessoas.Remove(item);
                 string json = JsonConvert.SerializeObject(pessoas.ToArray());
                 System.IO.File.WriteAllText(path, json);
-
             }
+            checkedListBox1.Items.Clear();
+            btn_confirmDel.Enabled = false;
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
+            groupBox2.Visible = true;
+            
             foreach (Person item in checkedListBox1.CheckedItems.OfType<Person>().ToList())
             {
-                txt_name.Text = item.Name;
-                txt_lastname.Text = item.LastName;
-                mtxt_birthday.Text = item.Birthday.ToString();
+                textBox2.Text = item.Name;
+                textBox1.Text = item.LastName;
+                maskedTextBox1.Text = item.Birthday.ToString();
                 index = pessoas.IndexOf(item);
 
             }
-
+            btn_confirmEdit.Enabled = true;
+            
 
         }
 
@@ -177,14 +182,17 @@ namespace wfp_birthday_manager
         {
             Person p = pessoas[index];
 
-            pessoas[index].Name = txt_name.Text;
-            pessoas[index].LastName = txt_lastname.Text;
-            pessoas[index].Birthday = DateTime.ParseExact(mtxt_birthday.Text.ToString(), "dd/MM/yyyy", CultureInfo.CurrentCulture);
+            pessoas[index].Name = textBox2.Text;
+            pessoas[index].LastName = textBox1.Text;
+            pessoas[index].Birthday = DateTime.Parse(maskedTextBox1.Text, CultureInfo.InvariantCulture);
 
             p.ToNextBirthday(p);
 
             string json = JsonConvert.SerializeObject(pessoas.ToArray());
             System.IO.File.WriteAllText(path, json);
+            btn_confirmEdit.Enabled = false;
+            checkedListBox1.Items.Clear();
+            groupBox2.Visible = false;
         }
 
         public void todayBirthday()
@@ -195,8 +203,8 @@ namespace wfp_birthday_manager
                 DateTime dt = new DateTime(DateTime.Today.Year, p.Birthday.Month, p.Birthday.Day);
                 if ( dt == DateTime.Today)
                 {
-                    
-                    MessageBox.Show(p.ToString());
+
+                    MessageBox.Show(p.Name + " " + p.LastName, "Aniversáriantes do dia!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } 
 
                 
@@ -204,7 +212,13 @@ namespace wfp_birthday_manager
             
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (Person p in pessoas)
+            {
+                checkedListBox1.Items.Add(p, false);
+            }
+        }
     }
 
 }
