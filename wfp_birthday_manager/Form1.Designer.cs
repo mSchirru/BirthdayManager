@@ -48,15 +48,23 @@
             this.editarPesssoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excluirPessoaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.procurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 86);
+            this.label1.Location = new System.Drawing.Point(24, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
@@ -67,7 +75,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(24, 154);
+            this.label2.Location = new System.Drawing.Point(24, 80);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 20);
@@ -78,7 +86,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 228);
+            this.label3.Location = new System.Drawing.Point(24, 136);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 20);
@@ -87,18 +95,18 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(202, 86);
+            this.txt_name.Location = new System.Drawing.Point(21, 49);
             this.txt_name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(266, 26);
+            this.txt_name.Size = new System.Drawing.Size(152, 26);
             this.txt_name.TabIndex = 3;
             // 
             // txt_lastname
             // 
-            this.txt_lastname.Location = new System.Drawing.Point(202, 154);
+            this.txt_lastname.Location = new System.Drawing.Point(21, 105);
             this.txt_lastname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_lastname.Name = "txt_lastname";
-            this.txt_lastname.Size = new System.Drawing.Size(266, 26);
+            this.txt_lastname.Size = new System.Drawing.Size(152, 26);
             this.txt_lastname.TabIndex = 4;
             // 
             // groupBox1
@@ -109,18 +117,18 @@
             this.groupBox1.Controls.Add(this.txt_lastname);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txt_name);
-            this.groupBox1.Location = new System.Drawing.Point(13, 564);
+            this.groupBox1.Location = new System.Drawing.Point(312, 592);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(513, 291);
+            this.groupBox1.Size = new System.Drawing.Size(193, 197);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "New person info";
             // 
             // mtxt_birthday
             // 
-            this.mtxt_birthday.Location = new System.Drawing.Point(202, 222);
+            this.mtxt_birthday.Location = new System.Drawing.Point(21, 159);
             this.mtxt_birthday.Mask = "00/00/0000";
             this.mtxt_birthday.Name = "mtxt_birthday";
             this.mtxt_birthday.Size = new System.Drawing.Size(91, 26);
@@ -243,11 +251,87 @@
             this.procurarToolStripMenuItem.Name = "procurarToolStripMenuItem";
             this.procurarToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.maskedTextBox1);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Location = new System.Drawing.Point(559, 592);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Size = new System.Drawing.Size(193, 197);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "EDITAR";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(21, 159);
+            this.maskedTextBox1.Mask = "00/00/0000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(91, 26);
+            this.maskedTextBox1.TabIndex = 5;
+            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(24, 24);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Name";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(24, 80);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Last Name";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(21, 105);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(152, 26);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(24, 136);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 20);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Birthday";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(21, 49);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(152, 26);
+            this.textBox2.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1811, 869);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_confirmEdit);
             this.Controls.Add(this.btn_edit);
@@ -267,6 +351,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -293,6 +379,13 @@
         private System.Windows.Forms.ToolStripMenuItem editarPesssoaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem excluirPessoaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem procurarToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

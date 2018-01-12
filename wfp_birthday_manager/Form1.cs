@@ -65,7 +65,7 @@ namespace wfp_birthday_manager
 
             }
 
-
+            todayBirthday();
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -140,7 +140,8 @@ namespace wfp_birthday_manager
 
             foreach (Person p in pessoas)
             {
-                checkedListBox1.Items.Add(p.ToString(), false);
+
+                checkedListBox1.Items.Add(p, false);
             }
 
         }
@@ -184,6 +185,23 @@ namespace wfp_birthday_manager
 
             string json = JsonConvert.SerializeObject(pessoas.ToArray());
             System.IO.File.WriteAllText(path, json);
+        }
+
+        public void todayBirthday()
+        {
+            
+            foreach(Person p in pessoas)
+            {
+                DateTime dt = new DateTime(DateTime.Today.Year, p.Birthday.Month, p.Birthday.Day);
+                if ( dt == DateTime.Today)
+                {
+                    
+                    MessageBox.Show(p.ToString());
+                } 
+
+                
+            }
+            
         }
 
 
