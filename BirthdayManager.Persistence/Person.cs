@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace wfp_birthday_manager
+namespace BirthdayManager.Persistence
 {
-    class Person
+    public class Person
     {
         private string name { get; set; }
         private string lastName { get; set; }
@@ -50,13 +50,6 @@ namespace wfp_birthday_manager
             p.NextBirthday = numDays;
         }
 
-        //public void ToNextBirthday(DateTime personsBirthday)
-        //{
-        //    DateTime nextBirthday = new DateTime(DateTime.Today.Year, personsBirthday.Month, personsBirthday.Day);
-
-        //    Console.WriteLine("Days to next birthday: " + (nextBirthday.Subtract(DateTime.Today).TotalDays));
-        //    Console.WriteLine("=============================================================");
-        //}
 
         public override string ToString()
         {
